@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
 
+print("Loading model...")
 # Load the model
 model = load_model("keras_model.h5", compile=False)
 
@@ -74,6 +75,7 @@ def showPrediction(dataImages,y):
 imageFolderApples = "./images/apples"
 imageFolderTomatoes = "./images/tomatoes" 
 
+print("Loading images...")
 #Getting file names for apples 
 applesFileNames = readFileNames(imageFolderApples)
  
@@ -92,12 +94,13 @@ yTest =  np.concatenate([y0,  y1]  )
 fileNames = applesFileNames + tomatoesFileNames
 #print(fileNames)
 
-
 dataImgs = readImages(fileNames) 
+
+print("Show prediction results...")   
 yp = showPrediction(dataImgs,yTest)  
 
 selArray = yp != yTest
-print("Failed image prediction: ")
+print("Failed image predictions: ")
 cont = 0 
 for c in selArray:     
     if c: 
