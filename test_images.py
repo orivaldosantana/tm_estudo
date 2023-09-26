@@ -39,7 +39,8 @@ def readImages(fileNames):
         image = Image.open(file).convert("RGB")
 
         # resizing the image to be at least 224x224 and then cropping from the center    
-        image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
+        #image = ImageOps.fit(image, size, Image.Resampling.LANCZOS) # For pillow version > 9.0.0 
+        image = ImageOps.fit(image, size, Image.LANCZOS)
 
         # turn the image into a numpy array
         image_array = np.asarray(image)
